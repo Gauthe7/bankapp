@@ -1,0 +1,38 @@
+<h1>Welcome  {{user}}</h1>
+
+<a routerLink="/transaction" style="font-size: 14px; color:white; text-decoration:none ;border :solid; padding:3px; border-radius: 5px;;" >view transaction history</a>
+<div class="login">
+    <div class="loginContent">
+        <form (ngSubmit)="deposit()">
+        <h1>Deposit</h1>
+        <input type="text" placeholder="Ac no" id="acid" name="acno" [(ngModel)]="acno" >
+        <br><br>
+        <input type="password" placeholder="password" id="pid" name="psw" [(ngModel)]="psw" >
+        <br><br>
+        <input type="text" placeholder="Amount" id="aid" name="amount" [(ngModel)]="amnt" >
+        <br><br>
+
+        <button class="loginButton"  type="submit" >Deposit</button>
+        <br>
+    </form>
+        
+    </div>
+</div>
+
+
+<div class="login" style="margin-top:10px ;">
+    <div class="loginContent">
+        <form (ngSubmit)="withdraw()">
+        <h1>withdraw</h1>
+        <input type="text" placeholder="Ac no" id="acid1" name="acno1" [(ngModel)]="acno1">
+        <br><br>
+        <input type="password" placeholder="password" id="pid1" name="psw1" [(ngModel)]="psw1" >
+        <br><br>
+        <input type="text" placeholder="Amount" id="aid1" name="amount1" [(ngModel)]="amnt1" >
+        <br><br>
+
+        <button class="loginButton"  type="submit" >withdraw</button>
+        <br>
+    </form>
+    </div>
+</div>

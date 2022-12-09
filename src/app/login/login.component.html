@@ -1,0 +1,18 @@
+<div class="aim">
+    <h1>{{aim}}</h1>
+</div>
+
+<div class="login">
+    <div class="loginContent">
+        <form (ngSubmit)="login()">
+        <h1>Login</h1>
+        <input type="text" [placeholder]="data" id="acid" name="acno" [(ngModel)]="acno">
+        <br><br>
+        <input type="password" placeholder="Enter password" id="pid" name="psw" [(ngModel)]="psw">
+        <br><br>
+        <button class="loginButton"  type="submit" >Login</button>
+        <br>
+        <a routerLink="register">New user?register here</a> 
+    </form>
+    </div>
+</div>
