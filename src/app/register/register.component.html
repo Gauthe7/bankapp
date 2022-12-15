@@ -1,12 +1,23 @@
 <div class="login">
     <div class="loginContent">
-        <form (ngSubmit)="register()">
+        <form (ngSubmit)="register()" [formGroup]="regisetrform">
         <h1>Login</h1>
-        <input type="text" placeholder="username" id="acid" name="uname" [(ngModel)]="uname">
+        <input type="text" placeholder="username" formControlName="uname" id="acid" name="uname" >
+        <div *ngIf="this.regisetrform.get('uname')?.errors && this.regisetrform.get('uname')?.touched " >
+            <p class="text-danger"> incorrect username</p>
+        </div>
         <br><br>
-        <input type="text" placeholder="Account number" id="pid" name="acno" [(ngModel)]="acno">
+        
+
+        <input type="text" placeholder="Account number" formControlName="acno" id="pid" name="acno" >
+        <div *ngIf="this.regisetrform.get('acno')?.errors && this.regisetrform.get('acno')?.touched">
+            <p class="text-danger">incorrect account number</p>
+        </div>
         <br><br>
-        <input type="password" placeholder="password" id="psw" name="psw" [(ngModel)]="psw">
+        <input type="password" placeholder="password" formControlName="psw" id="psw" name="psw" >
+        <div *ngIf="this.regisetrform.get('psw')?.errors && this.regisetrform.get('psw')?.touched">
+            <p class="text-danger">incorrect password</p>
+        </div>
         <br><br>
 
         <button class="loginButton"  type="submit" >Sign up</button>

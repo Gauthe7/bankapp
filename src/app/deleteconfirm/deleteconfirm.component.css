@@ -1,0 +1,11 @@
+h3{
+    color: wheat;
+}
+button{
+    border-radius: 4px;
+}
+button:hover{
+    cursor: pointer;
+    transition: all .7s;
+    background-color: green;
+}

@@ -4,11 +4,17 @@
 
 <div class="login">
     <div class="loginContent">
-        <form (ngSubmit)="login()">
+        <form (ngSubmit)="login()" [formGroup]="loginform">
         <h1>Login</h1>
-        <input type="text" [placeholder]="data" id="acid" name="acno" [(ngModel)]="acno">
+        <input type="text" [placeholder]="data" id="acid" name="acno" formControlName="acno" >
+        <div *ngIf="this.loginform.get('acno')?.errors && this.loginform.get('acno')?.touched " >
+            <p class="text-danger"> incorrect account number</p>
+        </div>
         <br><br>
-        <input type="password" placeholder="Enter password" id="pid" name="psw" [(ngModel)]="psw">
+        <input type="password" placeholder="Enter password" id="pid" name="psw" formControlName="psw">
+        <div *ngIf="this.loginform.get('psw')?.errors && this.loginform.get('psw')?.touched">
+            <p class="text-danger">incorrect password</p>
+        </div>
         <br><br>
         <button class="loginButton"  type="submit" >Login</button>
         <br>

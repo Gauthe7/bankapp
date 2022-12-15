@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../Services/service.service';
 // import { DataService } from '../Services/data.service';
@@ -10,33 +11,38 @@ import { DataService } from '../Services/service.service';
 })
 export class RegisterComponent {
 
-  acno=''
-  psw=''
-  uname=''
+  acno = ''
+  psw = ''
+  uname = ''
 
-  constructor(private ds:DataService,private router:Router){
+  constructor(private ds: DataService, private router: Router, private fb: FormBuilder) { }
 
-  }
-  ngOnInit():void{
-
-  }
-  register(){
-
-    var uname=this.uname
-    var acno=this.acno
-    var psw=this.psw
-
-    const result=this.ds.register(acno,uname,psw)
- 
-  if(result){
-    alert('registration sucess')
-    this.router.navigateByUrl("")
-  }
-  else{
-    alert('user already exist')
-    this.router.navigateByUrl("")
+  regisetrform = this.fb.group({ uname: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]], acno: ['', [Validators.required, Validators.pattern('[0-9]+')]], psw: ['', [Validators.required, Validators.pattern('[0-9]+')]] })
+  ngOnInit(): void {
 
   }
-}
+  register() {
+
+    var uname = this.regisetrform.value.uname
+    var acno = this.regisetrform.value.acno
+    var psw = this.regisetrform.value.psw
+
+    if(this.regisetrform.valid){
+      const result = this.ds.register(acno, uname, psw)
+
+    if (result) {
+      alert('registration sucess')
+      this.router.navigateByUrl("")
+    }
+    else {
+      alert('user already exist')
+      this.router.navigateByUrl("")
+
+    }
+    }
+    else{
+      alert('invalid form')
+    }
+  }
 
 }

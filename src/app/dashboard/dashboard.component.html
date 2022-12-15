@@ -1,15 +1,21 @@
-<h1>Welcome  {{user}}</h1>
+<h1>Welcome  {{user}}</h1><br>
+<h4 style="color: white;">{{dateandtime | date :'medium'}}</h4>
+<div>
+    <button class="btn btn-outline-danger" style="margin-left: 80%;" (click)="deleteconfirm()">Delete</button>
+    <app-deleteconfirm [item]="acno"></app-deleteconfirm>
+</div>
+<button  style="margin-left: 90%; "  class="loginButton" (click)="logout()" > Log out</button><br>
 
 <a routerLink="/transaction" style="font-size: 14px; color:white; text-decoration:none ;border :solid; padding:3px; border-radius: 5px;;" >view transaction history</a>
-<div class="login">
+<div class="login"  [ngClass]="acno?'style':''" >
     <div class="loginContent">
-        <form (ngSubmit)="deposit()">
+        <form (ngSubmit)="deposit()" [formGroup]="depositform">
         <h1>Deposit</h1>
-        <input type="text" placeholder="Ac no" id="acid" name="acno" [(ngModel)]="acno" >
+        <input type="text" placeholder="Ac no" id="acid" name="acno" formControlName="acno" >
         <br><br>
-        <input type="password" placeholder="password" id="pid" name="psw" [(ngModel)]="psw" >
+        <input type="password" placeholder="password" id="pid" name="psw" formControlName="psw"  >
         <br><br>
-        <input type="text" placeholder="Amount" id="aid" name="amount" [(ngModel)]="amnt" >
+        <input type="text" placeholder="Amount" id="aid" name="amount" formControlName="amnt"  >
         <br><br>
 
         <button class="loginButton"  type="submit" >Deposit</button>
@@ -20,15 +26,15 @@
 </div>
 
 
-<div class="login" style="margin-top:10px ;">
+<div class="login" style="margin-top:10px ;" [ngClass]="acno?'style':''">
     <div class="loginContent">
-        <form (ngSubmit)="withdraw()">
+        <form (ngSubmit)="withdraw()" [formGroup]="withdrawform">
         <h1>withdraw</h1>
-        <input type="text" placeholder="Ac no" id="acid1" name="acno1" [(ngModel)]="acno1">
+        <input type="text" placeholder="Ac no" id="acid1" name="acno1" formControlName="acno1">
         <br><br>
-        <input type="password" placeholder="password" id="pid1" name="psw1" [(ngModel)]="psw1" >
+        <input type="password" placeholder="password" id="pid1" name="psw1" formControlName="psw1" >
         <br><br>
-        <input type="text" placeholder="Amount" id="aid1" name="amount1" [(ngModel)]="amnt1" >
+        <input type="text" placeholder="Amount" id="aid1" name="amount1" formControlName="amnt1" >
         <br><br>
 
         <button class="loginButton"  type="submit" >withdraw</button>
